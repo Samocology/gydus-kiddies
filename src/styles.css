@@ -1,0 +1,147 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-coral: var(--coral);
+  --color-peach: var(--peach);
+  --color-sky: var(--sky);
+  --color-cream: var(--cream);
+  --color-sun: var(--sun);
+  --color-mint: var(--mint);
+  --color-lavender: var(--lavender);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 10px 30px -12px color-mix(in oklab, #0B1F3A 14%, transparent);
+  --shadow-lift: 0 20px 50px -20px color-mix(in oklab, #0B1F3A 22%, transparent);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Light, friendly backgrounds — Gydus Kiddies brand */
+  --background: #FFF6E9;              /* soft cream */
+  --foreground: #121212;              /* charcoal */
+
+  --card: #FFFFFF;
+  --card-foreground: #121212;
+  --popover: #FFFFFF;
+  --popover-foreground: #121212;
+
+  --primary: #FF6B6B;                 /* coral pink */
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #EAF7FF;               /* pastel sky blue */
+  --secondary-foreground: #0B1F3A;
+
+  --muted: #FFF1DA;
+  --muted-foreground: #5B5570;
+
+  --accent: #F3ECFF;                  /* light lavender */
+  --accent-foreground: #1A0F2E;
+
+  --destructive: #E63946;
+  --destructive-foreground: #FFFFFF;
+
+  --border: rgba(11, 31, 58, 0.10);
+  --input: rgba(11, 31, 58, 0.12);
+  --ring: #FF6B6B;
+
+  --coral: #FF6B6B;
+  --peach: #FFB4A2;
+  --sky: #6BCBFF;
+  --cream: #FFF6E9;
+  --sun: #FFD93D;
+  --mint: #6EE7B7;
+  --lavender: #A29BFE;
+
+  --chart-1: #FF6B6B;
+  --chart-2: #6BCBFF;
+  --chart-3: #FFD93D;
+  --chart-4: #6EE7B7;
+  --chart-5: #A29BFE;
+}
+
+.dark {
+  --background: #0B1F3A;              /* deep navy */
+  --foreground: #FFF6E9;
+  --card: #121C33;
+  --card-foreground: #FFF6E9;
+  --popover: #121C33;
+  --popover-foreground: #FFF6E9;
+  --primary: #FF6B6B;
+  --primary-foreground: #0B1F3A;
+  --secondary: #1A2A48;
+  --secondary-foreground: #EAF7FF;
+  --muted: #1A2A48;
+  --muted-foreground: #B8C4D8;
+  --accent: #1A0F2E;                  /* midnight purple */
+  --accent-foreground: #F3ECFF;
+  --border: rgba(255, 246, 233, 0.12);
+  --input: rgba(255, 246, 233, 0.15);
+  --ring: #FF6B6B;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@utility container-x {
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) { padding-inline: 2rem; }
+  @media (min-width: 1280px) { padding-inline: 4rem; }
+}
+
+@utility tile-gradient-1 { background: linear-gradient(135deg, #FFE3D6, #FFB4A2); }
+@utility tile-gradient-2 { background: linear-gradient(135deg, #EAF7FF, #C7EBFF); }
+@utility tile-gradient-3 { background: linear-gradient(135deg, #FFF6D6, #FFE58A); }
+@utility tile-gradient-4 { background: linear-gradient(135deg, #FFE1E7, #FFB4C4); }
+@utility tile-gradient-5 { background: linear-gradient(135deg, #DFF7EA, #A9EBC9); }
+@utility tile-gradient-6 { background: linear-gradient(135deg, #F3ECFF, #CDBFFF); }
+@utility brand-gradient { background: linear-gradient(135deg, #FF7A7A, #FFD36E 35%, #7ED6DF 70%, #A29BFE); }

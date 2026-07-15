@@ -1,0 +1,34 @@
+import { createFileRoute } from "@tanstack/react-router";
+import type {} from "@tanstack/react-start";
+import { categories, products } from "@/lib/data";
+
+const BASE_URL = "";
+
+export const Route = createFileRoute("/sitemap.xml")({
+  server: {
+    handlers: {
+      GET: async () => {
+        const staticPaths = [
+          "/","/shop","/new-arrivals","/sales","/about","/contact","/faq","/track-order","/wishlist","/cart","/account",
+        ];
+        const entries = [
+          ...staticPaths.map((p) => ({ path: p })),
+          ...categories.map((c) => ({ path: `/category/${c.slug}` })),
+          ...products.map((p) => ({ path: `/product/${p.id}` })),
+        ];
+        const urls = entries.map(
+          (e) => `  <url><loc>${BASE_URL}${e.path}</loc></url>`
+        );
+        const xml = [
+          `<?xml version="1.0" encoding="UTF-8"?>`,
+          `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+          ...urls,
+          `</urlset>`,
+        ].join("\n");
+        return new Response(xml, {
+          headers: { "Content-Type": "application/xml", "Cache-Control": "public, max-age=3600" },
+        });
+      },
+    },
+  },
+});
